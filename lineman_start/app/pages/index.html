@@ -6,14 +6,12 @@
     <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
   </head>
 
-  <!-- TODO: change <body> to <body ng-app> -->
-  <body>
-
-    <h2>Status: {{ 1 + 1 }}</h2>
+  <body ng-app="app" ng-controller="gameCtrl">
+    <h2>Status: {{ status }}</h2>
 
     <div class="fire-control">
-      <input type="text">
-      <input type="button" value="Fire!">
+      <input type="text" ng-model="shot">
+      <input type="button" value="Fire!" ng-click="fire(shot)">
     </div>
 
     <table class="grid">
@@ -21,83 +19,13 @@
         <th></th>
         <tr>
           <th></th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
+          <th ng-repeat="columnHeader in columnHeaders">
+              {{columnHeader}}
+          </th>
         </tr>
-        <tr>
-          <th>A</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>B</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>C</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>D</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>E</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>F</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-        </tr>
-        <tr>
-          <th>G</th>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
-          <td>o</td>
+        <tr ng-repeat="rowHeader in rowHeaders">
+            <th>{{rowHeader}}</th>
+            <td id="{{rowHeader}}{{columnHeader}}" ng-repeat="columnHeader in columnHeaders">{{cell_status(rowHeader + columnHeader)}}</td>
         </tr>
     </table>
 

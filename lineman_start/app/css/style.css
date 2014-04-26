@@ -12,3 +12,13 @@
   border-collapse: seperate;
   border-spacing: 4px;
 }
+.hit,
+.miss{
+    color: #ffffff;
+}
+.hit{
+    background-color: red;
+}
+.miss{
+    background-color: gray;
+}
